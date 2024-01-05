@@ -7,8 +7,10 @@
 
 class Contact {
 	public:
+	Contact();
 
 
+	void displayContact(int id);
 	private:
 		std::string first_name;
 		std::string last_name;

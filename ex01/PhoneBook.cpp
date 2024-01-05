@@ -1,15 +1,25 @@
 #include "PhoneBook.hpp"
 
 
-class MyClass {
-public:
-    // Member variables
-    int myNumber;
-    std::string myString;
 
-    // Member functions
-    void display() {
-        std::cout << "Number: " << myNumber << "\n";
-        std::cout << "String: " << myString << "\n";
+
+
+PhoneBook::PhoneBook(){
+
+    for(int i = 0; i < 8; i++)
+    {
+        list_contacts[i] =
+
+
     }
-};
+
+
+}
+
+void add_contact()
+{
+
+
+
+    
+}
