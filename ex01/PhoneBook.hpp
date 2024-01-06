@@ -7,10 +7,13 @@
 class PhoneBook {
     public:
         PhoneBook();
-        Contact list_contacts[8];
-        void add_contact();
-    private:
+        void add_contact(int id);
+        void set_contact_details(int id, const std::string& first, const std::string& last,
+            const std::string& nick, const std::string& phone, const std::string& secret);
+        void display_contact(int id);
+        
         Contact contacts[8];
+    private:
 };
 
 #endif

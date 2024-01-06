@@ -1,16 +1,19 @@
 #include "main.hpp"
-
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 static void print_menu(std::string message)
 {
 	std::cout << CLEAR_TERM << "Welcome to your Phonebook" << std::endl;
    	std::cout << std::endl;
-	std::cout << message << std::endl;
+	std::cout << message;
 }
 
 int main() {
 	std::string buff;
-	Contact newContact;
 	int id = 0;
+	Contact newContact;
+	PhoneBook reference;
+
 	print_menu("What would you like to do: ");
    while (TRUE) {
 	std::cin >> buff;
@@ -24,7 +27,7 @@ int main() {
 		else if (buff == "ADD" || buff == "add")
 		{
 			std::cout << CLEAR_TERM << "Adding contact" << std::endl;
-			newContact.displayContact(id);
+			reference.add_contact(id);
 		}
 		else if (buff == "SEARCH" || buff == "search")
 			std::cout << "Still testing" << std::endl;

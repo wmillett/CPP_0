@@ -1,34 +1,37 @@
-
 # Colours
 RED = '\033[0;31m'
 GREEN = '\033[0;32m'
 RESET_COLOR = '\033[0;0m'
 
-GC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+# Compiler
+CXX = g++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable
 NAME = phonebook
 
-# Source file
+# Source files
 SRC = main.cpp \
-	Contact.cpp \
-	#PhoneBook.cpp \
+      Contact.cpp \
+      PhoneBook.cpp
 
-OBJS = $(SRC.c=%.o)
+# Object files
+OBJS = $(SRC:%.cpp=%.o)
+
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(OBJS)
 	@echo $(GREEN)"Compiling $(NAME)"$(RESET_COLOR)
-	@$(GC) $(CFLAGS) -o $(NAME) $(SRC)
+	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	@echo $(RED)"No object files to remove."$(RESET_COLOR)
+	@echo $(RED)"Removing object files."$(RESET_COLOR)
+	@rm -f $(OBJS)
 
-fclean:
-	@echo $(RED)"$(NAME) has been deleted."$(RESET_COLOR)
+fclean: clean
+	@echo $(RED)"Removing $(NAME)"$(RESET_COLOR)
 	@rm -f $(NAME)
 
 re: fclean all
 
-.phony: all $(NAME) clean fclean re
+.PHONY: all clean fclean re
