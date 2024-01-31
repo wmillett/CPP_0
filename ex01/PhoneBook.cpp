@@ -37,7 +37,7 @@ void add_contact(int id)
 	void Contact::set_contact_details(int id, const std::string& first, const std::string& last,
                                     const std::string& nick, const std::string& phone, const std::string& secret) {
     if (id >= 0 && id < 8) {
-        contacts[id].setDetails(first, last, nick, phone, secret);
+        Contacts[id].setDetails(first, last, nick, phone, secret);
     } else {
         std::cout << "Invalid contact ID." << std::endl;
     }
