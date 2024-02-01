@@ -3,42 +3,63 @@
 
 PhoneBook::PhoneBook(){
 
-    Contact();
+    Contact member[8];
     for (int i = 0; i < 8; ++i) {
-            contacts[i].setDetails("DefaultFirstName", "DefaultLastName", "DefaultNickname",
+            member[i].setDetails("DefaultFirstName", "DefaultLastName", "DefaultNickname",
                                    "DefaultPhoneNumber", "DefaultDarkestSecret");
         }
 }
+PhoneBook::~PhoneBook(){
+}
 
-void add_contact(int id)
+void PhoneBook::addContact(int id)
 {
+    
     std::string tmp_first; 
     std::string tmp_last;
     std::string tmp_nickname;
     std::string phone;
     std::string dark;
-
-    std::cout << CLEAR_TERM << "First name: ";
+    std::cout << SET_TERM << "First name: ";
     std::cin >> tmp_first;
-    std::cout << std::endl << "Last name: ";
+    std::cout << SET_TERM << "Last name: ";
     std::cin >> tmp_last;
-    std::cout << std::endl << "Nickname: ";
+    std::cout << SET_TERM << "Nickname: ";
     std::cin >> tmp_nickname;
-    std::cout << std::endl << "Phone number: ";
+    std::cout << SET_TERM << "Phone number: ";
     std::cin >> phone;
-    std::cout << std::endl << "Darkest secret: ";
+    std::cout << SET_TERM << "Darkest secret: ";
     std::cin >> dark;
-
-    Contact::set_contact_details(id, tmp_first, tmp_last, tmp_nickname, phone, dark);
-    // PhoneBook::contacts[id]
-
+    member[id].setDetails(tmp_first, tmp_last, tmp_nickname, phone, dark);
 }
 
-	void Contact::set_contact_details(int id, const std::string& first, const std::string& last,
-                                    const std::string& nick, const std::string& phone, const std::string& secret) {
-    if (id >= 0 && id < 8) {
-        Contacts[id].setDetails(first, last, nick, phone, secret);
-    } else {
-        std::cout << "Invalid contact ID." << std::endl;
+void PhoneBook::displayMember(int id)
+{
+    member[id].displayContact(id);
+  
+}
+
+void PhoneBook::formatString(std::string &input) {
+    if (input.length() > 10) {
+        input.erase(10);
+        input[9] = '.'; 
     }
+    else if (input.length() < 10) {
+        int spacesToAdd = 10 - input.length();
+        input = std::string(spacesToAdd, ' ') + input;
+    }
+}
+
+std::string PhoneBook::getInfo(int id)
+{
+    std::string strNumber = std::to_string(id);
+    std::string firstName = member[id].fetchData(FIRST);
+    std::string lastName = member[id].fetchData(LAST);
+    std::string nickname = member[id].fetchData(NICK);
+    formatString(strNumber);
+    formatString(firstName);
+    formatString(lastName);
+    formatString(nickname);
+    
+    return (strNumber + "|" + firstName + "|" + lastName + "|" + nickname);
 }

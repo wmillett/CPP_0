@@ -16,7 +16,7 @@ Contact::~Contact(){
 void Contact::displayContact(int id)
 {
 	(void)id;
-	std::cout << CLEAR_TERM;
+	std::cout << SET_TERM;
     std::cout << "First Name: " << first_name << std::endl;
 	std::cout << "Last Name: " << last_name << std::endl;
 	std::cout << "Nickname: " <<  nickname << std::endl;
@@ -31,4 +31,15 @@ void Contact::setDetails(const std::string& first, const std::string& last, cons
     nickname = nick;
     phone_number = phone;
     darkest_secret = secret;
+}
+
+std::string Contact::fetchData(int data)
+{
+	if (data == FIRST)
+		return(first_name);
+	if (data == LAST)
+		return(last_name);
+	if (data == NICK)
+		return(nickname);
+	return (NULL);
 }

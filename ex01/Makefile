@@ -11,9 +11,9 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = phonebook
 
 # Source files
-SRC = main.cpp \
-      Contact.cpp \
-      PhoneBook.cpp
+SRC = Contact.cpp \
+      PhoneBook.cpp \
+		main.cpp \
 
 # Object files
 OBJS = $(SRC:%.cpp=%.o)
