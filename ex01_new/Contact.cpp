@@ -32,3 +32,14 @@ void Contact::setDetails(const std::string& first, const std::string& last, cons
     phone_number = phone;
     darkest_secret = secret;
 }
+
+std::string Contact::fetchData(int data)
+{
+	if (data == FIRST)
+		return(first_name);
+	if (data == LAST)
+		return(last_name);
+	if (data == NICK)
+		return(nickname);
+	return (NULL);
+}

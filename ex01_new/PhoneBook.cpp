@@ -1,4 +1,3 @@
-#include "main.hpp" //rm
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
@@ -42,8 +41,14 @@ void PhoneBook::displayMember(int id)
 {
     member[id].displayContact(id);
   
-
 }
+
+std::string PhoneBook::getInfo(int id)
+{
+    std::string strNumber = std::to_string(id);
+    return(strNumber + " | " + member[id].fetchData(FIRST) + " | " + member[id].fetchData(LAST) + " | " + member[id].fetchData(NICK));
+}
+
 
 
 // 	void Contact::set_contact_details(int id, const std::string& first, const std::string& last,

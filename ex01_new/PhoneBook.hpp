@@ -3,6 +3,7 @@
 
 # include "main.hpp"
 # include "Contact.hpp"
+# include <string.h>
 
 class PhoneBook {
     public:
@@ -10,7 +11,7 @@ class PhoneBook {
         ~PhoneBook();
         void addContact(int id);
         void displayMember(int id);
-
+        std::string getInfo(int id);
     private:
     Contact member[8];
         void set_contact_details(int id, const std::string& first, const std::string& last,
